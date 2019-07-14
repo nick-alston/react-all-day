@@ -23,7 +23,6 @@ test("Challenge 1: Breadcrumb component", () => {
    * When that's done, unskip this test and run `yarn test` in a console to see
    * the result.
    */
-
   const component = mount(<Breadcrumb values={[0.2, 0.44456, 13.33]} />);
   expect(
     component.contains(

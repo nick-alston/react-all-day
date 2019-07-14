@@ -6,6 +6,14 @@ export interface Props {
 
 export class Breadcrumb extends React.PureComponent<Props> {
   render() {
-    return <div />;
+    return (
+      <div className="breadcrumb">
+        <ul>
+          {this.props.values.map(val => {
+            return (<li key={val}>{val.toFixed(3)}</li>);
+          })}
+        </ul>
+      </div>
+    );
   }
 }

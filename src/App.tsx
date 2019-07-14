@@ -2,14 +2,17 @@ import * as React from "react";
 import { connect } from "react-redux";
 import "./App.css";
 import { RootState } from "./redux/reducers";
+import { actionCreators } from "./redux/actions/counter";
 
 interface ConnectProps {
   counter: number;
 }
 
-type Props = {} & ConnectProps;
+type Props = {
+  dispatch: Function;
+} & ConnectProps;
 
-export class App extends React.PureComponent<Props> {
+export class App extends React.Component<Props> {
   render() {
     return (
       <>
@@ -32,7 +35,9 @@ export class App extends React.PureComponent<Props> {
           {/* Challenge 5: <div className="notification is-danger" /> */}
           <div className="field is-grouped">
             <p className="control">
-              <button className="button" id="increment-btn">
+              <button className="button"
+                id="increment-btn"
+                onClick={() => this.props.dispatch(actionCreators.increment(this.props.counter))}>
                 Click to increment
               </button>
             </p>

@@ -1,17 +1,18 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import * as Bluebird from "bluebird";
+// import * as Bluebird from "bluebird";
 import "./App.css";
 import { RootState } from "./redux/reducers";
 import { actionCreators, IncrementAction} from "./redux/actions/counter";
-import { ThunkAction } from "./redux/actions/interfaces";
+// import { ThunkAction } from "./redux/actions/interfaces";
 
 interface ConnectProps {
   counter: number;
 }
 
 type Props = {
-  dispatch: (A: IncrementAction | ThunkAction<Bluebird<void>>) => {};
+  // dispatch: (A: IncrementAction | ThunkAction<Bluebird<void>>) => {};
+  dispatch: (A: IncrementAction) => {};
 } & ConnectProps;
 
 export class App extends React.PureComponent<Props> {

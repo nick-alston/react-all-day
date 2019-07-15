@@ -1,18 +1,20 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import * as Bluebird from "bluebird";
 import "./App.css";
 import { RootState } from "./redux/reducers";
-import { actionCreators } from "./redux/actions/counter";
+import { actionCreators, IncrementAction} from "./redux/actions/counter";
+import { ThunkAction } from "./redux/actions/interfaces";
 
 interface ConnectProps {
   counter: number;
 }
 
 type Props = {
-  dispatch: Function;
+  dispatch: (A: IncrementAction | ThunkAction<Bluebird<void>>) => {};
 } & ConnectProps;
 
-export class App extends React.Component<Props> {
+export class App extends React.PureComponent<Props> {
   render() {
     return (
       <>
@@ -42,7 +44,10 @@ export class App extends React.Component<Props> {
               </button>
             </p>
             <p className="control">
-              <button className="button" id="delay-increment-btn">
+              <button className="button"
+                id="delay-increment-btn"
+                // onClick={() => this.props.dispatch(actionCreators.delayIncrement(this.props.counter))}
+                >
                 Click to increment slowly
               </button>
             </p>
